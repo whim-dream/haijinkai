@@ -9,6 +9,29 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<script>
+function Test()
+{
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://docs.google.com/spreadsheets/d/1oEXPH34SWU4UAouaKAr2z7RnstnWu2vpTVHpk27sNjk/export?format=csv&gid=417898500", true);
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState !== 4) return;
+
+        if (xhr.status === 200)
+        {
+            const originalCsvText = xhr.responseText;
+            const rowSplitCsv = RemoveEmptyFinal(originalCsvText.split("\r\n"));
+
+            console.log(rowSplitCsv);
+        }
+        else
+        {
+            console.log("エラー（" + xhr.status + "）");
+        }
+    };
+    xhr.send(null);
+}
+</script> 
 <div id="outer">
 <header><h1>テスト</h1>
 <p>テスト</p>
