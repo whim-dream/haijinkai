@@ -20,7 +20,7 @@ function Test()
         if (xhr.status === 200)
         {
             const originalCsvText = xhr.responseText;
-            const rowSplitCsv = RemoveEmptyFinal(originalCsvText.split("\r\n"));
+            const rowSplitCsv = originalCsvText.split("\r\n");
 
             console.log(rowSplitCsv);
         }
