@@ -25,12 +25,22 @@ function playYouTube(video_id, start_sec, end_sec) {
       }
     });
     function onPlayerStateChange(event) {
-      if (event.data == YT.PlayerState.PLAYING) {
-        player.unMute();
-        const currentTime = player.getCurrentTime(); // 再生位置を取得
-        if (currentTime >= end_sec) {
-          //stop and play next
-          player.pauseVideo
+        let checkTime; //監視システム
+        if (event.data === YT.PlayerState.PLAYING) {
+          // 動画が再生中のとき
+          player.unMute();
+          checkTime = setInterval(() => {
+            const currentTime = player.getCurrentTime(); // 再生位置を取得
+            if (currentTime >= end_sec) {
+              //任意の処理
+              console.log('指定した再生時間に達しました！');
+              player.pauseVideo
+              clearInterval(checkTime); // 監視を停止
+            }
+          }, 1000); //1000ms=1秒ごとに実行
+        } else if (event.data === YT.PlayerState.PAUSED) {
+          // 動画が一時停止されたとき
+          clearInterval(checkTime); // 監視を停止
         }
     }
   }
