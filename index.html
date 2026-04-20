@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <script>
-  </script>
+  <script src="source/youtube_api.js"></script>
   <div id="outer">
     <header><h1>テスト</h1>
       <p>テスト</p>
@@ -24,7 +23,10 @@
       <h4>記事ページ見出し・小</h4>
       <p>文章あれこれ</p>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/vfmEVlSFmWE?autoplay=1&start=459&end=467" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <!-- プレーヤー配置用の空タグ -->
+      <div id="player"></div>
     </div>
+    <script>playYouTube();</script>
   </div>
   <aside>
   <div class="right-title">サイドバータイトル</div>
