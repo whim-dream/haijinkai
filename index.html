@@ -4,57 +4,38 @@
 <meta charset="utf-8">
 <title>あなたのＨＰタイトル</title>
 <meta name="keywords" content="ページのキーワードA,B,C">
-<meta name="description" content="ページの説明">
+<meta name="description" content="シマハイイロギツネ非公式ファンサイト">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<script>
-function Test()
-{
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://docs.google.com/spreadsheets/d/1oEXPH34SWU4UAouaKAr2z7RnstnWu2vpTVHpk27sNjk/export?format=csv&gid=417898500", true);
-    xhr.onreadystatechange = () => {
-        if (xhr.readyState !== 4) return;
-
-        if (xhr.status === 200)
-        {
-            const originalCsvText = xhr.responseText;
-            const rowSplitCsv = originalCsvText.split("\r\n");
-
-            console.log(rowSplitCsv);
-        }
-        else
-        {
-            console.log("エラー（" + xhr.status + "）");
-        }
-    };
-    xhr.send(null);
-}
-Test();
-</script> 
-<div id="outer">
-<header><h1>テスト</h1>
-<p>テスト</p>
-</header>
-<div id="content">
-<div class="inner"><h2>記事ページ見出し・大</h2>
-<p>文章あれこれ</p>
-<h3>記事ページ見出し・中</h3>
-<p>文章あれこれ</p>
-<h4>記事ページ見出し・小</h4>
-<p>文章あれこれ</p>
-</div>
-</div>
-<aside>
-<div class="right-title">サイドバータイトル</div>
-<div class="link">
-<ul>
-<li>記事ページへのリンク</li>
-<li>記事ページへのリンク</li>
-</ul>
-</div>
-</aside>
-<footer>© 2010 あなたのホームページ</footer>
-</div></body>
+  <script>
+  </script>
+  <div id="outer">
+    <header><h1>テスト</h1>
+      <p>テスト</p>
+    </header>
+    <div id="content">
+    <div class="inner">
+      <h2>記事ページ見出し・大</h2>
+      <p>文章あれこれ</p>
+      <h3>記事ページ見出し・中</h3>
+      <p>文章あれこれ</p>
+      <h4>記事ページ見出し・小</h4>
+      <p>文章あれこれ</p>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/vfmEVlSFmWE?autoplay=1&start=459&end=467" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+  </div>
+  <aside>
+  <div class="right-title">サイドバータイトル</div>
+  <div class="link">
+  <ul>
+    <li>記事ページへのリンク</li>
+    <li>記事ページへのリンク</li>
+  </ul>
+  </div>
+  </aside>
+  <footer>うんちぇ</footer>
+  </div>
+</body>
 </html>
