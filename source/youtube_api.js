@@ -28,6 +28,7 @@ function playYouTube(video_id, start_sec, end_sec) {
     console.log(video_id);
     console.log(start_sec);
     console.log(end_sec);
+
     function onPlayerStateChange(event) {
         let checkTime; //監視システム
         if (event.data === YT.PlayerState.PLAYING) {
