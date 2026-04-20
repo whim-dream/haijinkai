@@ -1,4 +1,5 @@
 function playYouTube(video_id, start_sec, end_sec) {
+  console.log("this is DEBUG");
   const script_tag = document.createElement('script');
   script_tag.src = 'https://www.youtube.com/iframe_api';
   document.body.appendChild(script_tag);
@@ -24,6 +25,9 @@ function playYouTube(video_id, start_sec, end_sec) {
         'onError': onPlayerError // エラーの発生を検知
       }
     });
+    console.log(video_id);
+    console.log(start_sec);
+    console.log(end_sec);
     function onPlayerStateChange(event) {
         let checkTime; //監視システム
         if (event.data === YT.PlayerState.PLAYING) {
@@ -44,6 +48,6 @@ function playYouTube(video_id, start_sec, end_sec) {
         }
     }
   }
-
-
 }
+
+console.log("read js file");
