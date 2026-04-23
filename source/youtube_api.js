@@ -33,25 +33,32 @@ const loadYouTubeAPI = new Promise((resolve) => {
 });
 
 async function setupYouTubePlayer() {
+  console.log("waiting loadYouTubeAPI");
   await loadYouTubeAPI;
-  return new YT.Player('player', { //div id
-    // videoId: video_id, // 動画ID
+  console.log("loadYouTubeAPI done");
+  const { promise, resolve } = Promise.withResolvers();
+  let player = new YT.Player('player', { //div id
+    // videoId: "vfmEVlSFmWE", // 動画ID
     width: "1280", // プレーヤーの幅
     height: "720", // プレーヤーの高さ
-    playerVars: {
+    // playerVars: {
       // 'autoplay'  : 1, // 自動再生
       // 'mute'      : 1,
-      'controls'  : 0, // コントロールの表示/非表示
-      'loop'      : 0, // 繰り返し再生のオン/オフ
+      // 'controls'  : 0, // コントロールの表示/非表示
+      // 'loop'      : 0, // 繰り返し再生のオン/オフ
       // 'start'     : start_sec, //開始時間
       // 'end'       : end_sec //終了時間
-    },
+    // },
     events: {
-      'onStateChange': onPlayerStateChange, // 再生状態の変化を検知
+      'onReady': resolve,
+    //   'onStateChange': onPlayerStateChange, // 再生状態の変化を検知
       // 'onPlaybackRateChange': onPlayerPlaybackRateChange, // 再生速度の変化を検知
       // 'onError': onPlayerError // エラーの発生を検知
     }
   });
+  // wait until player is correctly setup
+  await promise;
+  return player;
 }
 
 async function playYouTube(video_id, start_sec, end_sec) {
@@ -59,10 +66,14 @@ async function playYouTube(video_id, start_sec, end_sec) {
   let player = await setupYouTubePlayer();
   console.log("player is set up");
   player.loadVideoById({videoId: video_id,
-                        startSeconds: start_sec,
+                        startSeconds:start_sec,
                         endSeconds: end_sec});
+
+  player.addEventListener("onStateChange", createAutoStopFunction(player, end_sec));
 }
-function onPlayerStateChange(event) {
+
+function createAutoStopFunction(player, end_sec) {
+  return function (event) {
     let checkTime; //監視システム
     if (event.data === YT.PlayerState.PLAYING) {
       // 動画が再生中のとき
@@ -80,7 +91,9 @@ function onPlayerStateChange(event) {
       // 動画が一時停止されたとき
       clearInterval(checkTime); // 監視を停止
     }
+  }
 }
+
 
 async function setupYouTubeAPI() {
 
