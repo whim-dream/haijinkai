@@ -17,14 +17,14 @@
     </header>
     <div id="content">
     <div class="inner">
-      <h2>記事ページ見出し・大</h2>
+      <!-- <h2>記事ページ見出し・大</h2>
       <p>文章あれこれ</p>
       <h3>記事ページ見出し・中</h3>
       <p>文章あれこれ</p>
-      <h4>記事ページ見出し・小</h4>
-      <p>文章あれこれ</p>
+      <h4>記事ページ見出し・小</h4> -->
+      <p>動画</p>
       <div id='player'></div>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/vfmEVlSFmWE?autoplay=1&start=459&end=467" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/vfmEVlSFmWE?autoplay=1&start=459&end=467" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
       <!-- プレーヤー配置用の空タグ -->
     </div>
   </div>
@@ -41,53 +41,7 @@
   </div>
   <script>
     console.log("DEBUG");
-    // playYouTube("vfmEVlSFmWE", 459, 467);
-  </script>
-  <script>
-  // 2. This code loads the IFrame Player API code asynchronously.
-  var tag = document.createElement('script');
-
-  tag.src = "https://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-  // 3. This function creates an <iframe> (and YouTube player)
-  //    after the API code downloads.
-  var player;
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-      height: '390',
-      width: '640',
-      videoId: 'vfmEVlSFmWE',
-      playerVars: {
-        'playsinline': 1
-      },
-      events: {
-        'onReady': onPlayerReady,
-        'onStateChange': onPlayerStateChange
-      }
-    });
-  }
-
-  // 4. The API will call this function when the video player is ready.
-  function onPlayerReady(event) {
-    event.target.playVideo();
-  }
-
-  // 5. The API calls this function when the player's state changes.
-  //    The function indicates that when playing a video (state=1),
-  //    the player should play for six seconds and then stop.
-  var done = false;
-  function onPlayerStateChange(event) {
-    if (event.data == YT.PlayerState.PLAYING && !done) {
-      setTimeout(stopVideo, 6000);
-      done = true;
-    }
-  }
-  function stopVideo() {
-    player.stopVideo();
-    alert("video stopped");
-  }
+    playYouTube("vfmEVlSFmWE", 459, 467);
   </script>
 </body>
 </html>
